@@ -1,3 +1,3 @@
 various challenges
 
-<info to be updated>
+*more info to be updated* 
