@@ -6,7 +6,7 @@ const SpawnCircles = () => {
   const [radius, setRadius] = useState(3)
   const [delay, setDelay] = useState(false)
 
-  const handleClick = (event) => {
+  const handleClick = ({ pageX, pageY }) => {
     if(delay) return
     if(radius === 0) return
 
@@ -16,12 +16,9 @@ const SpawnCircles = () => {
         setDelay(false)
     }, 200);
 
-    const { pageX, pageY } = event
-
     const randomColor = Math.floor(Math.random()*16777215).toString(16);
 
     setCircles(circles => [...circles, [ pageX, pageY, randomColor, radius ]]);
-    console.log(circles)
   };
 
   const handleUndo = () => {
@@ -45,8 +42,8 @@ const SpawnCircles = () => {
     return elem.length > 0 ? `#${elem[elem.length - 1][2]}` : '#fff'
   }
 
-const handleOnWheel = (e) => {
-  if(e.nativeEvent.wheelDelta > 0) setRadius(radius + 1)
+const handleOnWheel = ({ nativeEvent: { wheelDelta } }) => {
+  if(wheelDelta > 0) setRadius(radius + 1)
   else setRadius(radius - 1)
 }
 
