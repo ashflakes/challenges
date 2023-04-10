@@ -4,16 +4,9 @@ const SpawnCircles = () => {
   const [circles, setCircles] = useState([])
   const [removedCircles, setRemovedCircles] = useState([])
   const [delay, setDelay] = useState(false)
-  //const [time, setTime] = useState(0)
 
   const handleClick = (event) => {
-    if(delay) return
-    setDelay(true)
-
-    setInterval(() => {
-        setDelay(false)
-    }, 200);
-
+    
     const { pageX, pageY } = event
 
     const randomColor = Math.floor(Math.random()*16777215).toString(16);
@@ -42,14 +35,11 @@ const SpawnCircles = () => {
     return elem.length > 0 ? `#${elem[elem.length - 1].background}` : '#fff'
   }
 
-//   React.useEffect(() => {
-//     let interval = null;
   
-//     interval = setInterval(() => {
-//         setTime((time) => time + 1);
-//       }, 100);
-//     }, []);
+// useEffect(() => {
   
+// }, [])
+
 
   return (
     <div className="container" >
