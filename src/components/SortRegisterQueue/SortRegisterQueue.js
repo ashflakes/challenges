@@ -6,6 +6,7 @@ const SortRegisterQueue = () => {
     const [registers, setRegisters] = useState([0, 0, 0, 0, 0])
     const [lines, setLines] = useState([[1, 5], [3, 1], [4], [7], [2, 3]])
     const [productNum, setProductNum] = useState(0)
+    const [isRunning, setIsRunning] = useState(false)
 
     const intervalIDRef = React.useRef(null);
     
@@ -54,13 +55,12 @@ const SortRegisterQueue = () => {
       setLines(newArr)
 
       setRegisters(calcTotals)
-
-      
-      console.log(registers)
-      console.log('-ADDED-----------')
     }
 
     const handleStart = () => {
+      if(isRunning) return
+
+      setIsRunning(true)
         
       intervalIDRef.current = setInterval(() => {
           console.log(registers)
@@ -76,6 +76,7 @@ const SortRegisterQueue = () => {
 
     const stop = () => {
       clearInterval(intervalIDRef.current)
+      setIsRunning(false)
 
     }
 
