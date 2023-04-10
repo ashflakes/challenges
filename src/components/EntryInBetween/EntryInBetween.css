@@ -1,0 +1,29 @@
+.cell {
+    width: 5rem;
+    height: 5rem;
+    border:solid 7px #41403E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(240, 241, 220, 0.6);
+    font-size: larger;    
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    border-bottom-right-radius: 225px 15px;
+    border-bottom-left-radius:15px 255px;
+  }
+  
+  .pre{
+    width: 1rem;
+    border: none;
+  }
+  
+  .pre:hover {
+    background-color: rgb(53, 85, 85);
+  }
+  
+  .macro-cell {
+    display: flex;
+    flex-direction: row;
+  }
+  
