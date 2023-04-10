@@ -6,12 +6,19 @@ const SpawnCircles = () => {
   const [delay, setDelay] = useState(false)
 
   const handleClick = (event) => {
-    
+    if(delay) return
+
+    setDelay(true)
+
+    setTimeout(() => {
+        setDelay(false)
+    }, 200);
+
     const { pageX, pageY } = event
 
     const randomColor = Math.floor(Math.random()*16777215).toString(16);
 
-    setCircles(circles => [...circles, { x: pageX, y: pageY, background: randomColor }]);
+    setCircles(circles => [...circles, [ pageX, pageY, randomColor ]]);
   };
 
   const handleUndo = () => {
@@ -32,13 +39,13 @@ const SpawnCircles = () => {
   }
 
   const getBackground = (elem) => {
-    return elem.length > 0 ? `#${elem[elem.length - 1].background}` : '#fff'
+    return elem.length > 0 ? `#${elem[elem.length - 1][2]}` : '#fff'
   }
 
   
-// useEffect(() => {
-  
-// }, [])
+useEffect(() => {
+    console.log(delay)
+}, [delay])
 
 
   return (
@@ -48,7 +55,7 @@ const SpawnCircles = () => {
       
       <div className='canvas' onClick={handleClick}>
         {circles.map((circle, index) => (
-          <div className="circle" key={index} style={{ left: circle.x, top: circle.y, background: `#${circle.background}` }}></div>
+          <div className="circle" key={index} style={{ left: circle[0], top: circle[1], background: `#${circle[2]}` }}></div>
         ))}
       </div>
     </div>
